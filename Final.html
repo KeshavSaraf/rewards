@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <input id="text">
+    <input id="count">
+    <button onclick = "start()">Click here to initiate action</button>
+
+    <form action="https://bing.com/search" target="popup" onsubmit="form_submit_win = window.open('about:blank','popup','width=1000,height=800');">
+
+        <input name="q">
+        <button type="submit" id="submit">Start</button>
+        <input type="hidden" name="qs" value="ds">
+        <input type="hidden" name="form" value="QBRS">
+        <input type="hidden" name="cbir" value="sbi">
+        <input type="hidden" name="imageBin" value="">
+
+    </form>
+
+    <script>
+        var form_submit_win;
+        var interval;
+        var curr_count = 0;
+
+        function make_hidden_inputs() {
+            var value = Math.floor(Math.random()*3+2);
+            var inputs = document.querySelectorAll("input[type='hidden']");
+            var names = ["qs", "form", "cbir", "imageBin"];
+            for (var i=0; i<4; i++)
+                inputs[i].name = names[i];
+            for (var i=value; i<4; i++)
+                inputs[i].removeAttribute("name");
+        }
+
+        function perform_action() {
+            if (curr_count == Number(count.value)) {
+                clearInterval(interval);
+                return;
+            }
+
+            setTimeout(function() {
+                document.getElementsByName("q")[0].value = text.value;
+                text.value = text.value.substring(1);
+                submit.click();
+                setTimeout(function() {form_submit_win.close();}, 10000);
+            }, Math.floor(Math.random()*3)*1000);
+            curr_count++;
+        }
+
+        function start() {
+            interval = setInterval(perform_action, 15000);            
+        }
+
+
+    </script>
+</body>
+</html>
