@@ -49,7 +49,7 @@
         }
 
         function perform_action() {
-            if (Number(count.value) == 0) {
+            if (Number(count.value) <= 0) {
                 clearInterval(interval);
                 return;
             }
@@ -73,7 +73,7 @@
         }
 
         function start() {
-            str_len = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 20 : 30;
+            str_len = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 25 : 35;
             count.value = str_len;
             text.value = random_text();           
         }
