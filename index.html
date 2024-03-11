@@ -23,7 +23,7 @@
     <input type="range" min="5" max="20" value = "20" id = "internet_speed_time" onchange="time_change(Number(this.value))">
     <br><br>
     <button id="action_button" onclick = "interval = setInterval(perform_action, time * 1000); this.style.display = 'none'; stop.style.display = 'inline';">Click here to initiate action</button>
-    <button id="stop" style = "display: none;" onclick="action_button.innerHTML = 'Resume'; action_button.display.style = 'iniline'; this.style.display = 'none'">Pause</button>
+    <button id="stop" style = "display: none;" onclick="action_button.innerHTML = 'Resume'; action_button.style.display = 'iniline'; this.style.display = 'none'">Pause</button>
 
     <form action="https://bing.com/search" target="popup" onsubmit="form_submit_win = window.open('about:blank','popup','width=1000,height=800');">
         <input name="q">
