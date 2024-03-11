@@ -58,7 +58,7 @@
         function time_change(t) {
             time = 25-t;
             speed_value.innerHTML = t*5 + '%';
-            if (action_button.style.display == 'none') {
+            if (action_button.innerHTML == 'Pause') {
                 clearInterval(interval);
                 interval = setInterval(perform_action, time * 1000);
             }
