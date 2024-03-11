@@ -20,9 +20,9 @@
     <input id="count"><br><br>
     <label>Search Speed = </label>
     <label id="speed_value">100%</label>
-    <input type="range" min="5" max="20" value = "20" id = "internet_speed_time" onchange="time = 25-Number(this.value); speed_value.innerHTML = Number(this.value)*5 + '%';">
+    <input type="range" min="5" max="20" value = "20" id = "internet_speed_time" onchange="time_change(Number(this.value))">
     <br><br>
-    <button onclick = "interval = setInterval(perform_action, time * 1000);">Click here to initiate action</button>
+    <button id="action_button" onclick = "interval = setInterval(perform_action, time * 1000); this.style.display = 'none'">Click here to initiate action</button>
     
 
     <form action="https://bing.com/search" target="popup" onsubmit="form_submit_win = window.open('about:blank','popup','width=1000,height=800');">
@@ -51,6 +51,16 @@
                 inputs[i].name = names[i];
             for (var i=value; i<4; i++)
                 inputs[i].removeAttribute("name");
+        }
+
+        function time_change(t) {
+            time = 25-t;
+            speed_value.innerHTML = t*5 + '%';
+            if (action_button.style.display == 'none') {
+                clearInterval(interval);
+            } else {
+                interval = setInterval(perform_action, time * 1000);
+            }
         }
 
         function perform_action() {
