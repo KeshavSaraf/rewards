@@ -18,13 +18,15 @@
 
     <input id="text"><br><br>
     <input id="count"><br><br>
-    <button onclick = "interval = setInterval(perform_action, time * 1000); ">Click here to initiate action</button>
     <label>Internet Speed</label>
     <select id = "internet_speed_time">
         <option value = "8">Fast</option>
         <option value = "14">Medium</option>
         <option value = "20">Slow</option>
     </select>
+    <br><br>
+    <button onclick = "interval = setInterval(perform_action, time * 1000); ">Click here to initiate action</button>
+    
 
     <form action="https://bing.com/search" target="popup" onsubmit="form_submit_win = window.open('about:blank','popup','width=1000,height=800');">
         <input name="q">
@@ -32,6 +34,7 @@
         <input type="hidden" name="form" value="QBRS">
         <input type="hidden" name="cbir" value="sbi">
         <input type="hidden" name="imageBin" value="">
+        <button type="submit" id="submit">Start</button>
     </form>
 
     <script>
