@@ -23,10 +23,9 @@
     <input id="count"><br><br>
     <label>Search Speed = </label>
     <label id="speed_value">100%</label>
-    <input type="range" min="5" max="20" value = "20" id = "internet_speed_time" onchange="time_change(Number(this.value))">
+    <input type="range" min="5" max="20" value = "20" id = "internet_speed_time" oninput="time_change(Number(this.value))">
     <br><br>
-    <button id="action_button" onclick = "interval = setInterval(perform_action, time * 1000); this.setAttribute('style', 'display:none'); stop.setAttribute('style', 'display:iniline');">Click here to initiate action</button>
-    <button id="stop" onclick="action_button.innerHTML = 'Resume'; action_button.setAttribute('style', 'display:iniline'); this.setAttribute('style', 'display:none')">Pause</button>
+    <button id="action_button" onclick = "this.value == 'Pause' ? pause(this) : resume(this);">Click here to initiate action</button>
 
     <form action="https://bing.com/search" target="popup" onsubmit="form_submit_win = window.open('about:blank','popup','width=1000,height=800');">
         <input name="q">
@@ -63,6 +62,16 @@
                 clearInterval(interval);
                 interval = setInterval(perform_action, time * 1000);
             }
+        }
+
+        function resume(btn) {
+            interval = setInterval(perform_action, time * 1000);
+            btn.innerHTML = "Pause";
+        }
+
+        function pause(btn) {
+            clearInterval(interval);
+            btn.innerHTML = "Resume";
         }
 
         function perform_action() {
