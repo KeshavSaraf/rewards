@@ -58,7 +58,6 @@
             speed_value.innerHTML = t*5 + '%';
             if (action_button.style.display == 'none') {
                 clearInterval(interval);
-            } else {
                 interval = setInterval(perform_action, time * 1000);
             }
         }
