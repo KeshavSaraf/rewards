@@ -58,7 +58,7 @@
             time = localStorage.getItem("time");
             if (time != null) {
                 time = Number(time);
-                let t = 25 - t;
+                let t = 25 - time;
                 document.getElementById("search_speed").value = t;
                 document.getElementById("search_speed_label").innerHTML = t*5 + '%';
             } else {
@@ -84,9 +84,9 @@
         }
         
         document.getElementById("control_button").addEventListener("click", function() {
-            if (this.value == "Pause") {
+            if (this.innerHTML == "Pause") {
                 clearInterval(interval);
-                interval = null;z
+                interval = null;
                 this.innerHTML = "Resume";
             } else {
                 interval = setInterval(perform_action, time * 1000);
