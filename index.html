@@ -21,7 +21,7 @@
     <input id="count"><br><br>
     <label>Search Speed = </label>
     <label id="search_speed_label">100%</label>
-    <input type="range" min="5" max="20" value = "20" id = "search_speed">
+    <input type="range" min="5" max="20" id = "search_speed">
     <br><br>
     <button id="control_button">Start</button>
 
@@ -62,7 +62,10 @@
                 document.getElementById("search_speed").value = t;
                 document.getElementById("search_speed_label").innerHTML = t*5 + '%';
             } else {
-                time = 5;
+                time = 10;
+                let t = 25 - time;
+                document.getElementById("search_speed").value = t;
+                document.getElementById("search_speed_label").innerHTML = t*5 + '%';
             }
         }
 
